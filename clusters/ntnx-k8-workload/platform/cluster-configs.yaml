@@ -16,7 +16,7 @@ data:
   milvus_version: "4.1.13"
   milvus_objects_bucket_name: "milvus"
   kafka_version: "26.8.5"
-  model: "llama_2_7b_chat"
+  model: "llama2_7b_chat"
   revision: "94b07a6e30c3292b8265ed32ffdeccfdadf434a8"
   maxTokens: "4000"
   repPenalty: "1.2"
