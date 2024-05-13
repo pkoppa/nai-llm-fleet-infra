@@ -6,7 +6,6 @@ metadata:
 spec:
   dependsOn:
   - name: knative-serving-post-deploy
-  - name: knative-eventing-post-deploy
   interval: 15m
   sourceRef:
     kind: GitRepository
@@ -15,7 +14,7 @@ spec:
     provider: sops
     secretRef:
       name: sops-age
-  path: ./platform/kserve/v0.11.2/_deploy
+  path: ./platform/kserve/v0.11.2/_deploy/manifests
   prune: true
   wait: true
   timeout: 15m
@@ -55,7 +54,7 @@ spec:
     provider: sops
     secretRef:
       name: sops-age
-  path: ./platform/kserve/v0.11.2/_post-deploy
+  path: ./platform/kserve/v0.11.2/_post-deploy/manifests
   prune: true
   wait: true
   timeout: 15m

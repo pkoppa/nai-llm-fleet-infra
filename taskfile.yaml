@@ -1,8 +1,5 @@
 version: '3'
 
-#vars:
-#  K8S_CLUSTER_NAME: '{{.K8S_CLUSTER_NAME}}'
-
 dotenv: ['configs/_common/.env', '.local/{{.K8S_CLUSTER_NAME}}/.env']
 
 includes:
@@ -12,6 +9,9 @@ includes:
   kubectl:
     taskfile: ./.taskfiles/kubectl.yaml
     aliases: [k]
+  kustomize:
+    taskfile: ./.taskfiles/kustomize.yaml
+    aliases: [ks]
   nke: ./.taskfiles/nke.yaml
   flux: ./.taskfiles/flux.yaml
   tofu: ./.taskfiles/tofu.yaml
