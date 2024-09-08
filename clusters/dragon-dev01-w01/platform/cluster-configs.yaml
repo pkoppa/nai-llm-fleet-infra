@@ -4,7 +4,7 @@ metadata:
   name: cluster-configs
 data:
   cluster_name: "dragon-dev01-w01"
-  environment: "prod"
+  environment: "non-prod"
   cluster_profile: "llm-workloads"
   gpu_cuda_toolkit_version: "v1.14.3-centos7"
   gpu_operator_version: "v23.9.0"
@@ -33,3 +33,10 @@ data:
   uptrace_version: "1.5.7"
   weave_gitops_version: "4.0.36"
   jupyterhub_version: "3.1.0"
+  jupyterhub_overrides: |-
+    hub:
+      config:
+        Authenticator:
+          allowed_users:
+          - wolfgang
+          - jesse

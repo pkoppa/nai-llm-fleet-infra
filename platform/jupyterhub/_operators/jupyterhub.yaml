@@ -29,15 +29,17 @@ spec:
         kind: HelmRepository
         name: jupyterhub
       version: ${jupyterhub_version}
-  interval: 30m
-  timeout: 10m
+  interval: 15s
+  timeout: 30m
   install:
     remediation:
-      retries: 3
+      retries: 30
+    createNamespace: false
+    replace: true
   upgrade:
     remediation:
-      retries: 3
-    preserveValues: true
+      retries: 30
+    preserveValues: false
   values:
     singleuser:
       defaultUrl: "/lab"
@@ -66,16 +68,16 @@ spec:
         Authenticator:
           admin_users:
           - admin
-          allowed_users:
-          - user1
-          - user2
-          - user3
-          - user4
         DummyAuthenticator:
-          password: nutanix.1
+          password: ${jupyterhub_default_pass}
         JupyterHub:
           authenticator_class: dummy
     proxy:
       service:
         type: ClusterIP
+  valuesFrom:
+  - kind: ConfigMap
+    name: cluster-configs
+    valuesKey: jupyterhub_overrides
+    optional: true
 
